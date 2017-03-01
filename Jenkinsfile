@@ -2,19 +2,40 @@ pipeline {
     agent any
 
     stages {
+        stage('Code Commit') {
+            steps {
+                echo 'Code Commit Stage..'
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:monkeylittle/spring-jpa-inheritance.git']]])
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Build Stage..'
             }
         }
-        stage('Test') {
+        stage('Acceptance Test') {
             steps {
-                echo 'Testing..'
+                echo 'Acceptance Test Stage....'
             }
         }
-        stage('Deploy') {
+        stage('Performance Test') {
             steps {
-                echo 'Deploying....'
+                echo 'Performance Test Stage....'
+            }
+        }
+        stage('Stability Test') {
+            steps {
+                echo 'Stability Test Stage....'
+            }
+        }
+        stage('Exploratory Test') {
+            steps {
+                echo 'Exploratory Test Stage....'
+            }
+        }
+        stage('Production') {
+            steps {
+                echo 'Production Stage....'
             }
         }
     }
