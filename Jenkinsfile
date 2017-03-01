@@ -5,8 +5,10 @@ pipeline {
         stage('Code Commit') {
             steps {
                 echo 'Code Commit Stage..'
-                def mvnHome = tool 'MAVEN3'
-                sh "${mvnHome}/bin/mvn clean install -DskipTests"
+                node {
+                  def mvnHome = tool 'MAVEN3'
+                  sh "${mvnHome}/bin/mvn clean install -DskipTests"
+                }
             }
         }
         stage('Build') {
