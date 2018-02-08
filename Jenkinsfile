@@ -10,7 +10,12 @@ pipeline {
     stages {
         stage('Code Commit') {
             steps {
-                echo 'Code Commit Stage..'
+                sh 'mvn clean package'
+            }
+            post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml'
+                }
             }
         }
         stage('Build') {
