@@ -47,24 +47,16 @@ pipeline {
                     }
                 }
             }
-            post {
-                success {
-                    input message: "Promote to exploratory test environment?"
-                }
-            }
         }
         stage('Exploratory Test') {
             steps {
+                input message: "Promote to exploratory test environment?"
                 echo 'Exploratory Test Stage....'
-            }
-            post {
-                success {
-                    input message: "Promote to production environment?"
-                }
             }
         }
         stage('Production') {
             steps {
+                input message: "Promote to production environment?"
                 echo 'Production Stage....'
             }
         }
