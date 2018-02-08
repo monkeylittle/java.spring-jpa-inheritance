@@ -4,7 +4,7 @@ pipeline {
         pollSCM('H/1 * * * *')
     }
     tools {
-        jdk 'jdk-8u161-oth-JPR'
+        jdk 'Java SE Development Kit 8'
         maven 'M3'
     }
     stages {
