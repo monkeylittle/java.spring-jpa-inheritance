@@ -18,19 +18,24 @@ pipeline {
                 echo 'Build Stage..'
             }
         }
-        stage('Acceptance Test') {
-            steps {
-                echo 'Acceptance Test Stage....'
-            }
-        }
-        stage('Performance Test') {
-            steps {
-                echo 'Performance Test Stage....'
-            }
-        }
-        stage('Stability Test') {
-            steps {
-                echo 'Stability Test Stage....'
+        stage('Test') {
+            failFast false
+            parallel {
+                stage('Acceptance Test') {
+                    steps {
+                        echo 'Acceptance Test Stage....'
+                    }
+                }
+                stage('Performance Test') {
+                    steps {
+                        echo 'Performance Test Stage....'
+                    }
+                }
+                stage('Stability Test') {
+                    steps {
+                        echo 'Stability Test Stage....'
+                    }
+                }
             }
         }
         stage('Exploratory Test') {
