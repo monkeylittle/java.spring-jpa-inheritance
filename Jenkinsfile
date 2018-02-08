@@ -1,6 +1,12 @@
 pipeline {
     agent any
-
+    triggers {
+        pollSCM('H/1 * * * *')
+    }
+    tools {
+        jdk 'jdk-8u161-oth-JPR'
+        maven 'M3'
+    }
     stages {
         stage('Code Commit') {
             steps {
