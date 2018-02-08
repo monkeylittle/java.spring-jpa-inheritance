@@ -13,7 +13,7 @@ pipeline {
                 sh 'mvn clean package'
             }
             post {
-                success {
+                always {
                     junit 'target/surefire-reports/**/*.xml'
                 }
             }
@@ -21,6 +21,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build Stage..'
+            }
+            post {
+                success {
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                }
             }
         }
         stage('Test') {
