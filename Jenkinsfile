@@ -50,13 +50,13 @@ pipeline {
         }
         stage('Exploratory Test') {
             steps {
-                input message: "Promote to exploratory test environment?"
+                input message: "Promote to Exploratory Test?"
                 echo 'Exploratory Test Stage....'
             }
         }
         stage('Production') {
             steps {
-                input message: "Promote to production environment?"
+                input message: "Promote to Production?"
                 echo 'Production Stage....'
             }
         }
