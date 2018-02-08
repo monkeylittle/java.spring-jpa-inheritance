@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Code Commit') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn package'
             }
             post {
                 always {
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Build Stage..'
+                sh 'mvn verify'
             }
             post {
                 success {
