@@ -6,11 +6,11 @@ import javax.persistence.Entity;
 public class Bike extends Vehicle {
 
 	public Bike(Colour colour) {
-		
-		super(colour);
+
+		super(colour, false);
 	}
-	
+
 	public Bike() {
-		
+
 	}
 }

@@ -27,39 +27,39 @@ import com.monkeylittle.jpa.inheritance.model.Vehicle;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @Transactional
-public class AirplaneRepositoryTest {
+public class AirplaneRepositoryIntegrationTest {
 
 	@Autowired
 	private VehicleRepository vehicleRepository;
-	
+
 	@Autowired
 	private AirplaneRepository airplaneRepository;
-	
+
 	@Before
 	public void before() {
-		
+
 		vehicleRepository.save(new Bike(Colour.BLACK));
 		vehicleRepository.save(new Car(Colour.WHITE));
 		vehicleRepository.save(new Airplane(Colour.BLACK));
 	}
-	
+
 	@Test
 	public void find_all() {
-		
+
 		List<Airplane> airplanes = IteratorUtils.toList(airplaneRepository.findAll().iterator());
-		
-		assertThat(airplanes.size(), equalTo(1));		
+
+		assertThat(airplanes.size(), equalTo(1));
 		assertAirplane(airplanes.get(0), Colour.BLACK);
 	}
-	
+
 	private void assertVehicle(Vehicle vehicle, Colour colour) {
-		
+
 		assertThat(vehicle.getId(), is(notNullValue()));
 		assertThat(vehicle.getColour(), is(colour));
 	}
-	
+
 	private void assertAirplane(Airplane airplane, Colour colour) {
-		
+
 		assertVehicle(airplane, colour);
 	}
 }
