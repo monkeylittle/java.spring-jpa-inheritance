@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn verify'
+                sh 'mvn verify -Dskip.surefire.tests=true'
             }
             post {
                 always {
